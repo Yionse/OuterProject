@@ -164,7 +164,7 @@ onMounted(() => {
     <el-card class="w-30 item-card">
       <div id="three" style="width: 100%; height: inherit"></div>
     </el-card>
-    <div
+    <!-- <div
       style="
         display: flex;
         flex-direction: row;
@@ -175,7 +175,7 @@ onMounted(() => {
       <el-card class="item-card">
         <div id="one" style="width: 100%; height: inherit"></div>
       </el-card>
-    </div>
+    </div> -->
     <el-card class="w-30 item-card">
       <div id="three" style="width: 100%; height: inherit">
         <h3>新用户</h3>

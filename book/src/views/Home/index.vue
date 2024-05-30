@@ -2,9 +2,12 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
+// 获取Router示例
 const router = useRouter();
+// 当前的router
 const current = ref("home");
 onMounted(() => {
+  // 当页面刷新时，联动菜单高亮
   current.value = location.pathname.replace("/index/", "");
 });
 </script>
