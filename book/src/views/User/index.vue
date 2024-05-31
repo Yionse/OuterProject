@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, computed } from "vue";
 
 // 初始数据
 const data = ref([
@@ -38,6 +38,104 @@ const data = ref([
     password: "culpa qui",
     img: "../../static/头像1.webp",
   },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 1,
+    nickname: "王小明",
+    phone: "15928774926",
+    password: "123456789",
+    img: "../../static/头像1.webp",
+  },
+  {
+    id: 2,
+    nickname: "薛敏",
+    phone: "13010791955",
+    password: "sintanim",
+    img: "../../static/头像1.webp",
+  },
 ]);
 // 数据copy一份
 const copyData = ref(data.value);
@@ -52,7 +150,7 @@ const updateData = ref({});
 
 // 搜索回调
 const searchHandle = () => {
-  copyData.value = data.value.filter(
+  copyData.value = copyData.value.filter(
     (item) =>
       item.nickname.includes(key.value) || item.phone.includes(key.value)
   );
@@ -63,9 +161,25 @@ const deleteHandle = (id) => {
   copyData.value = copyData.value.filter((item) => id !== item.id);
 };
 
-watchEffect(() => {
-  console.log(copyData.value);
+const currentPage = ref(1);
+const pageSize = ref(10);
+
+const total = computed(() => copyData.value.length);
+
+const pagedData = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value;
+  const end = start + pageSize.value;
+  return copyData.value.slice(start, end);
 });
+
+const handleSizeChange = (val) => {
+  pageSize.value = val;
+  currentPage.value = 1; // 改变每页显示条数时，回到第一页
+};
+
+const handleCurrentChange = (val) => {
+  currentPage.value = val;
+};
 </script>
 
 <template>
@@ -83,7 +197,7 @@ watchEffect(() => {
       >重置</el-button
     >
   </el-space>
-  <el-table :data="copyData">
+  <el-table :data="pagedData">
     <el-table-column prop="id" label="序号" />
     <el-table-column prop="nickname" label="姓名" width="180" />
     <el-table-column prop="phone" label="手机号" width="180" />
@@ -107,6 +221,16 @@ watchEffect(() => {
       </template>
     </el-table-column>
   </el-table>
+  <el-pagination
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
+    :current-page="currentPage"
+    :page-sizes="[10, 20, 30, 40]"
+    :page-size="pageSize"
+    layout="total, sizes, prev, pager, next, jumper"
+    :total="total"
+  >
+  </el-pagination>
   <el-dialog
     v-model="dialogTableVisible"
     title="编辑信息"
