@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const [form] = useForm();
   const navigate = useNavigate();
+  document.title = "统一登录平台";
   return (
     <div className="box relative" style={{ width: "100vw", height: "100vh" }}>
       <div
-        className="absolute top-1/2 left-1/2 h-96 w-96 "
+        className="absolute top-1/2 left-1/2 h-72 w-96 bg-white p-8 rounded-xl"
         style={{ transform: "translate(-50%, -50%)" }}
       >
         <h1 className="text-center">个人博客</h1>
@@ -25,40 +26,47 @@ export default function Login() {
           form={form}
           onFinish={() => {
             const { username, code } = form.getFieldsValue();
-            if (username === "123@qq.com" && code === "123123") {
+            if (username === "admin" && code === "admin") {
               navigate("/home/index");
             } else {
-              message.error("验证错误");
+              message.error("密码错误，请重试");
             }
           }}
         >
           <Form.Item
+            label="账号"
             name="username"
-            rules={[{ required: true, message: "请输入验证码" }]}
+            rules={[{ required: true, message: "请输入账号" }]}
           >
             <Input
-              type="email"
+              type="text"
               prefix={<UserOutlined />}
               placeholder="请输入账号"
             />
           </Form.Item>
           <Form.Item
+            label="密码"
             name="code"
             rules={[
-              { required: true, max: 6, message: "最长为6位" },
-              { required: true, min: 6, message: "输入6位验证码" },
+              { required: true, max: 18, message: "最长为18位" },
+              { required: true, message: "请输入密码" },
             ]}
           >
             <Input
               type="password"
               prefix={<LockOutlined />}
-              placeholder="请输入6为验证码"
-              maxLength={6}
-              minLength={6}
+              placeholder="请输入密码"
+              maxLength={18}
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="w-full">
+            <Button
+              htmlType="submit"
+              className="w-full bg-red-600"
+              style={{
+                color: "white",
+              }}
+            >
               登录
             </Button>
           </Form.Item>

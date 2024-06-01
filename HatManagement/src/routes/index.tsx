@@ -4,18 +4,23 @@ import {
   UserAddOutlined,
   UsergroupAddOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-type MenuItem = Required<MenuProps>["items"][number];
 
 /**
  * 这里要和APP.tsx中的路由对象，记得放路由出口
  */
 
-export const routes: MenuItem[] = [
+interface SonMenu {
+  label: string;
+  icon: any;
+  key: string;
+  children?: SonMenu[];
+}
+
+export const routes: SonMenu[] = [
   {
     label: "主页",
     icon: <HomeOutlined />,
-    key: "home",
+    key: "index",
   },
   {
     label: "用户管理",

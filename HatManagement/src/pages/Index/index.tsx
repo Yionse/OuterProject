@@ -1,43 +1,24 @@
-import {
-  GithubFilled,
-  InfoCircleFilled,
-  QuestionCircleFilled,
-} from "@ant-design/icons";
-import {
-  PageContainer,
-  PageHeader,
-  ProCard,
-  ProLayout,
-} from "@ant-design/pro-components";
-import { useState } from "react";
-import defaultProps from "./_defaultProps";
-import logo from "@public/icon.ico";
+import { TabListContext } from "@/contexts/Tabs";
+import { Empty } from "antd";
+import { useContext } from "react";
 
-export default (Props: any) => {
-  const [pathname, setPathname] = useState("/home");
+export default function Index() {
+  const tests = useContext(TabListContext);
+  console.log(tests);
   return (
-    <div
-      style={{
-        height: "100vh",
-      }}
-    >
-      <ProLayout
-        title="后台管理系统"
-        logo={logo}
-        {...defaultProps}
-        location={{
-          pathname,
+    <>
+      <div className="text-center font-bold text-4xl">
+        欢迎使用安全帽管理系统
+      </div>
+      <Empty
+        image="https://img.js.design/assets/img/61035a1cbd36eb1fc96be3b0.png"
+        description=""
+        imageStyle={{
+          width: "500px",
+          height: "400px",
+          margin: "auto",
         }}
-        menuItemRender={(item, dom) => (
-          <div
-            onClick={() => {
-              setPathname(item.path || "/home");
-            }}
-          >
-            {dom}
-          </div>
-        )}
-      ></ProLayout>
-    </div>
+      />
+    </>
   );
-};
+}
