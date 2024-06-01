@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "@/pages/Login";
 import Home from "@/pages/Home";
-import Data from "./pages/Paper/Data";
-import Views from "./pages/Paper/Views";
+import Data from "./pages/User/Data";
+import Views from "./pages/User/Views";
 import Index from "./pages/Index";
 import { TabListProvider } from "./contexts/Tabs";
 export default function App() {

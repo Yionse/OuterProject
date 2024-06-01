@@ -28,12 +28,12 @@ export const routes: SonMenu[] = [
     key: "user",
     children: [
       {
-        label: "用户列表",
+        label: "人员管理",
         key: "list",
         icon: <OrderedListOutlined />,
       },
       {
-        label: "添加用户",
+        label: "人员轨迹",
         key: "add",
         icon: <UserAddOutlined />,
       },
