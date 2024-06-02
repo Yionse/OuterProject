@@ -1,10 +1,47 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
+import { useStore } from "vuex";
 
+const isLogin = ref(true);
 const phoneNumber = ref();
 const code = ref();
 const router = useRouter();
+const store = useStore();
+const clickHandle = () => {
+  if (isLogin.value) {
+    if (!phoneNumber.value || !code.value) {
+      ElMessage({ type: "error", message: "输入不完整" });
+      return;
+    } else {
+      store.commit("login", {
+        userName: phoneNumber.value,
+        password: code.value,
+      });
+      console.log(store.state.currentUser, "登录成功，有值了");
+      if (store.state.currentUser?.userName) {
+        ElMessage({ type: "success", message: "登录成功" });
+        router.replace("/index/home");
+      } else {
+        ElMessage({ type: "error", message: "登录失败" });
+        return;
+      }
+    }
+  } else {
+    if (!phoneNumber.value || !code.value) {
+      ElMessage({ type: "error", message: "输入不完整" });
+      return;
+    } else {
+      store.commit("register", {
+        userName: phoneNumber.value,
+        password: code.value,
+      });
+      console.log(store.state);
+      ElMessage({ type: "success", message: "注册成功" });
+    }
+  }
+};
 </script>
 
 <template>
@@ -19,15 +56,13 @@ const router = useRouter();
       <div class="login">
         <h2 style="text-align: center">欢迎登录</h2>
         <div style="display: flex; flex-direction: column; margin-top: 120px">
-          <el-input placeholder="请输入您的手机号" v-model="phoneNumber" />
+          <el-input placeholder="请输入您的账号" v-model="phoneNumber" />
           <el-input
-            placeholder="请输入验证码"
+            placeholder="请输入您的密码"
             style="margin: 20px 0"
             v-model="code"
+            type="password"
           >
-            <template #suffix>
-              <span style="color: #fca64f">获取验证码</span>
-            </template>
           </el-input>
           <div
             style="
@@ -36,14 +71,22 @@ const router = useRouter();
               text-decoration: underline;
               opacity: 0.6;
             "
+            @click="
+              () => {
+                isLogin = !isLogin;
+                phoneNumber = '';
+                code = '';
+              }
+            "
           >
-            忘记密码
+            {{ isLogin ? "注册" : "登录" }}
           </div>
           <el-button
             style="background: #ff6e3d; color: white"
-            @click="router.push('/index/home')"
-            >登录</el-button
+            @click="clickHandle"
           >
+            {{ isLogin ? "登录" : "注册" }}
+          </el-button>
         </div>
       </div>
     </div>

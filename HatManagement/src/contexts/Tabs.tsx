@@ -26,37 +26,30 @@ export function TabListProvider(props: any) {
       key: "/home/index",
     },
   ]);
-  const routerText = routes.map((item) => {
-    if (item?.children) {
-      const arr: any[] = item.children.map((items) => {
-        return { key: `${item.key}/${items.key}`, label: items.label };
-      });
-      return [...arr];
-    } else {
-      return { key: item?.key, label: item.label };
-    }
-  });
+  let routerText = routes
+    .map((item) => {
+      if (item?.children) {
+        const arr: any[] = item.children.map((items) => {
+          return { key: `${item.key}/${items.key}`, label: items.label };
+        });
+        return [...arr];
+      } else {
+        return { key: item?.key, label: item.label };
+      }
+    })
+    .flat(Infinity);
 
   useEffect(() => {
     if (location.pathname !== "/home/index") {
       const currentRoutes = location.pathname.replace("/home/", "");
-      routerText.forEach((item) => {
-        if (item instanceof Array) {
-          const temp = item?.find((items) => items?.key === currentRoutes);
-          setTabs([{ key: `/home/${temp.key}`, label: temp.label }]);
-          setActiveKey(`/home/${temp.key}`);
-          return;
-        } else {
-          setTabs([{ key: `/home/${item?.key}`, label: item?.label }]);
-          setActiveKey(`/home/${item?.key}`);
+      routerText.forEach((item: any) => {
+        if (item.key === currentRoutes) {
+          setTabs([item]);
+          setActiveKey(item.key);
         }
       });
     }
   }, []);
-
-  useEffect(() => {
-    console.log(tabs, "123");
-  }, [tabs]);
   return (
     <TabListContext.Provider value={{ tabs, setTabs, activeKey, setActiveKey }}>
       {props.children}

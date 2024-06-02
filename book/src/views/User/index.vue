@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect, computed } from "vue";
+import { ref, computed } from "vue";
 
 // 初始数据
 const data = ref([

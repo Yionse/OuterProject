@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SafetyHelmetMapper extends BaseMapper<SafetyHelmetEntity> {
+
+    void noBind(Integer id);
 }

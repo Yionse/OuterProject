@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,5 +19,5 @@ public class EmployeeEntity {
     @TableField(value = "rail_addr")
     private String railAddr;
     @TableField(value = "create_time")
-    private LocalDateTime createTime;
+    private LocalDate createTime;
 }

@@ -18,15 +18,7 @@ httpInstance.interceptors.request.use(
 );
 
 httpInstance.interceptors.response.use(
-  (res) => {
-    const { code, result, msg } = res.data;
-    if (code === 301) {
-      message.warning(msg);
-    } else if (code === 200 && result.isShowMessage) {
-      message.success(msg);
-    }
-    return result;
-  },
+  (res) => res.data.data,
   (error) => {
     message.error("网络错误");
     return Promise.reject(error);

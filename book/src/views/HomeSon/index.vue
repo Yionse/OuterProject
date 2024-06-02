@@ -2,24 +2,6 @@
 import { onMounted } from "vue";
 import * as echarts from "echarts";
 
-const newUser = [
-  {
-    user: "榛子185",
-    src: "https://img.js.design/assets/img/63d10f800045a3737cd7ee92.png#f047ce71ef76a4d8b44ff9342a8e70e6",
-    address: "北京,北京",
-  },
-  {
-    user: "茉莉亚f",
-    src: "https://img.js.design/assets/img/63d10f80a29aea50d99c8dfe.png#e7c2f3292f602dfe38b97cac61f5b5e4",
-    address: "广东,深圳",
-  },
-  {
-    user: "粒粒378y72",
-    src: "https://img.js.design/assets/img/63d10f80aa82d96de0fa5af0.png#b720f63e933d0cab619d4176982106ff",
-    address: "天津,天津",
-  },
-];
-
 onMounted(() => {
   // 记性echarts图表配置
   const chartDom = document.getElementById("two");
@@ -143,7 +125,6 @@ onMounted(() => {
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      height: 700px;
     "
   >
     <div
@@ -163,45 +144,6 @@ onMounted(() => {
     </div>
     <el-card class="w-30 item-card">
       <div id="three" style="width: 100%; height: inherit"></div>
-    </el-card>
-    <!-- <div
-      style="
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 65%;
-      "
-    >
-      <el-card class="item-card">
-        <div id="one" style="width: 100%; height: inherit"></div>
-      </el-card>
-    </div> -->
-    <el-card class="w-30 item-card">
-      <div id="three" style="width: 100%; height: inherit">
-        <h3>新用户</h3>
-        <div
-          v-for="user in newUser"
-          :key="user.user"
-          style="
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            width: 100%;
-            margin: 15px 0;
-          "
-        >
-          <img
-            :src="user.src"
-            style="width: 50px; height: 50px; border-radius: 50%"
-          />
-          <div style="flex: 1; margin-left: 20px">
-            <div>{{ user.user }}</div>
-            <div style="opacity: 0.6">{{ user.address }}</div>
-          </div>
-          <el-icon><ChatDotRound /></el-icon>
-        </div>
-      </div>
     </el-card>
   </div>
 </template>

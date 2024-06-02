@@ -14,13 +14,8 @@ export default function Login() {
         className="absolute top-1/2 left-1/2 h-72 w-96 bg-white p-8 rounded-xl"
         style={{ transform: "translate(-50%, -50%)" }}
       >
-        <h1 className="text-center">个人博客</h1>
-        <h3
-          className="text-center font-normal text-base mt-4"
-          style={{ color: "gray" }}
-        >
-          后台管理系统
-        </h3>
+        <h1 className="text-center">统一登录平台</h1>
+
         <Form
           className="mt-8"
           form={form}

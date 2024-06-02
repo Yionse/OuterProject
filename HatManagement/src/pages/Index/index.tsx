@@ -1,10 +1,6 @@
-import { TabListContext } from "@/contexts/Tabs";
 import { Empty } from "antd";
-import { useContext } from "react";
 
 export default function Index() {
-  const tests = useContext(TabListContext);
-  console.log(tests);
   return (
     <>
       <div className="text-center font-bold text-4xl">

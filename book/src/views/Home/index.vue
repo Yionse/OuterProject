@@ -1,11 +1,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 // 获取Router示例
 const router = useRouter();
 // 当前的router
 const current = ref("home");
+const store = useStore();
 onMounted(() => {
   // 当页面刷新时，联动菜单高亮
   current.value = location.pathname.replace("/index/", "");
@@ -15,13 +17,14 @@ onMounted(() => {
 <template>
   <el-card class="title-card">
     <div class="title">
-      <span>云来小说后台管理</span>
       <div>
         <img
           class="avatar"
           src="https://img.js.design/assets/img/66499b7d9098e68db2ec5bec.png#bde108e7017a3c8ff201cda7b10a0432"
         />
-        <span class="name">管理员</span>
+        <span class="name">{{
+          store.state?.currentUser?.userName || "未知"
+        }}</span>
         <el-button @click="router.replace('/')">退出</el-button>
       </div>
     </div>

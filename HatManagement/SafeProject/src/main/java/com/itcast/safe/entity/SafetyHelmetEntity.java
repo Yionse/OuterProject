@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,9 +16,9 @@ public class SafetyHelmetEntity {
     private String number;
     private String name;
     @TableField(value = "create_time")
-    private LocalDateTime createTime;
+    private LocalDate createTime;
     @TableField(value = "update_time")
-    private LocalDateTime updateTime;
+    private LocalDate updateTime;
     @TableField(value = "employee_id")
     private Integer employeeId;
 }

@@ -1,8 +1,12 @@
 import {
+  BorderOuterOutlined,
+  EnvironmentOutlined,
+  ExclamationOutlined,
   HomeOutlined,
   OrderedListOutlined,
   UserAddOutlined,
   UsergroupAddOutlined,
+  WarningOutlined,
 } from "@ant-design/icons";
 
 /**
@@ -23,7 +27,7 @@ export const routes: SonMenu[] = [
     key: "index",
   },
   {
-    label: "用户管理",
+    label: "人员管理",
     icon: <UsergroupAddOutlined />,
     key: "user",
     children: [
@@ -38,5 +42,25 @@ export const routes: SonMenu[] = [
         icon: <UserAddOutlined />,
       },
     ],
+  },
+  {
+    label: "安全帽管理",
+    icon: <WarningOutlined />,
+    key: "hat",
+  },
+  {
+    label: "围栏管理",
+    key: "fence",
+    icon: <BorderOuterOutlined />,
+  },
+  {
+    label: "人员定位管理",
+    key: "location",
+    icon: <EnvironmentOutlined />,
+  },
+  {
+    label: "报警管理",
+    key: "warn",
+    icon: <ExclamationOutlined />,
   },
 ];
