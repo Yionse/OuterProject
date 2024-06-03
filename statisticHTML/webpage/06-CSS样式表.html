@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS样式表</title>
+    <link rel="stylesheet" href="../css/06.css" />
+    <style>
+      @import url(../css/06-two.css);
+    </style>
+    <style>
+      #two {
+        color: skyblue;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <p style="color: red">样式表的第一种使用方法：定义标记的style属性</p>
+    <p id="two">样式表的第二种使用方法：定义内部样式表</p>
+    <p id="three">样式表的第三种使用方法：嵌入外部样式表</p>
+    <p id="four">样式表的第四种使用方法：链接外部样式表</p>
+  </body>
+</html>

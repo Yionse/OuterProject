@@ -1,0 +1,13 @@
+h3 {
+  color: purple;
+}
+
+ul > li > span {
+  color: green;
+  transition: all 0.3s linear;
+}
+
+ul > li > span:hover {
+  color: purple;
+  text-decoration: underline;
+}

@@ -1,0 +1,31 @@
+body {
+  background-color: pink;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+}
+div video {
+  width: 50%;
+  height: 300px;
+}
+
+.box {
+  display: block;
+  border: 1px solid black;
+}
+
+p,
+h3 {
+  text-align: center;
+}
+
+.item {
+  color: blue;
+}
+
+.title,
+.item-video {
+  border: 1px solid black;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>留言薄</title>
+    <link rel="stylesheet" href="../css/03.css" />
+  </head>
+  <body>
+    <h1>留言薄</h1>
+    <form action="#" method="post">
+      <table>
+        <tr>
+          <td>您的姓名：</td>
+          <td>
+            <input type="text" name="username" placeholder="请输入您的用户名" />
+          </td>
+        </tr>
+        <tr>
+          <td>您的性别：</td>
+          <td>
+            <input type="radio" id="male" name="gender" value="male" />
+            <label for="male">男</label>
+            <input type="radio" id="female" name="gender" value="female" />
+            <label for="female">女</label>
+          </td>
+        </tr>
+        <tr>
+          <td>您的兴趣爱好：</td>
+          <td>
+            <input
+              type="checkbox"
+              id="basketball"
+              name="hobbies"
+              value="basketball"
+            />
+            <label for="basketball">篮球</label>
+            <input
+              type="checkbox"
+              id="football"
+              name="hobbies"
+              value="football"
+            />
+            <label for="football">足球</label>
+            <input type="checkbox" id="tennis" name="hobbies" value="tennis" />
+            <label for="tennis">网球</label>
+            <input
+              type="checkbox"
+              id="badminton"
+              name="hobbies"
+              value="badminton"
+            />
+            <label for="badminton">羽毛球</label>
+            <input
+              type="checkbox"
+              id="climbing"
+              name="hobbies"
+              value="climbing"
+            />
+            <label for="climbing">爬山</label>
+            <input
+              type="checkbox"
+              id="swimming"
+              name="hobbies"
+              value="swimming"
+            />
+            <label for="swimming">游泳</label>
+            <input type="checkbox" id="music" name="hobbies" value="music" />
+            <label for="music">音乐</label>
+            <input
+              type="checkbox"
+              id="reading"
+              name="hobbies"
+              value="reading"
+            />
+            <label for="reading">阅读</label>
+          </td>
+        </tr>
+        <tr>
+          <td>您的邮箱：</td>
+          <td>
+            <input type="email" name="email" placeholder="请输入您的邮箱" />
+          </td>
+        </tr>
+        <tr>
+          <td>您的主页：</td>
+          <td><input type="url" name="homepage" placeholder="http://" /></td>
+        </tr>
+        <tr>
+          <td>其它联系方式：</td>
+          <td>
+            <input type="text" name="contact" placeholder="如QQ、MSN、电话等" />
+          </td>
+        </tr>
+        <tr>
+          <td>请上传您的头像：</td>
+          <td><input type="file" name="profile_picture" /></td>
+        </tr>
+        <tr>
+          <td>留言内容：</td>
+          <td>
+            <textarea
+              name="message"
+              rows="4"
+              maxlength="200"
+              placeholder="(200字以内)"
+            ></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" value="提交留言" />
+            <input type="reset" value="重新填写" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
