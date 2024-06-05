@@ -120,6 +120,7 @@ export default function Hat() {
     form.resetFields();
     setIsShowModal(false);
   };
+
   return (
     <>
       <Button type="primary" onClick={() => setIsShowModal(true)}>
