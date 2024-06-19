@@ -1,30 +1,23 @@
 package org.example;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
     static private ArrayList<Product> productList = new ArrayList<Product>();
-    static private Manager managerController = new Manager(productList);      //  超市管理者对象
+    static private Manager managerController = new Manager();      //  超市管理者对象
     static private Customer customer = new Customer();     //  顾客对象
+
     public static void main(String[] args) {
-        init();     //  初始化商品
         menu();     //  显示菜单，接收用户输入
     }
 
-    static public void init() {
-        //  初始化一些商品
-        Product product = new Product(
-                "可口可乐", 100,  3
-        );
-        Product product1 = new Product(
-                "优酸乳", 10,  2.5
-        );
-        managerController.addProduct(product);
-        managerController.addProduct(product1);
-    }
 
+    //  菜单
     static public void menu() {
         Scanner input = new Scanner(System.in);
         Integer type = -99;
@@ -113,6 +106,7 @@ public class Main {
                         if ( products.get(productId).getQuantity() >= num) {
                             validInputNum = true;
                             customer.buyProduct(products.get(productId), num);
+                            managerController.synchronizationProduct();
                             productMenu();
                             System.out.println("\u001B[32m请输入要购买的商品编号(-1退出顾客模式)：\u001B[0m");
                             validInput = false;
@@ -169,8 +163,9 @@ public class Main {
         price = scanner.nextDouble();
         System.out.println("\u001B[32m请输入商品库存：\u001B[0m");
         stock = scanner.nextInt();
-        Product product = new Product(productName, stock, price);
+        Product product = new Product(productName, price, 0, stock);
         managerController.addProduct(product);
+        managerController.synchronizationProduct();
         System.out.println("\u001B[32m商品添加成功！\u001B[0m");
         managerMenu();
     }
@@ -186,6 +181,7 @@ public class Main {
         while (!valid) {
             if (num >= 0 && num < managerController.getProductsList().size()) {
                 managerController.deleteProduct(managerController.getProductsList().get(num));
+                managerController.synchronizationProduct();
                 System.out.println("\u001B[31m删除成功！\u001B[0m");
                 productMenu();
                 managerMenu();
@@ -217,6 +213,7 @@ public class Main {
                 while (!validStock) {
                     if (addCount > 0) {
                         managerController.getProductsList().get(num).restockProduct(addCount);
+                        managerController.synchronizationProduct();
                         System.out.println("\u001B[32m成功添加商品库存！\u001B[0m");
                         productMenu();
                         managerMenu();

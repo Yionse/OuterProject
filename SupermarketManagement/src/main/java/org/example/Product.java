@@ -9,11 +9,11 @@ public class Product {
     private double price; // 单价
 
     // Constructor
-    public Product(String name, int quantity, double price) {
+    public Product(String name,  double price, int salesQuantity, int quantity) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
-        this.salesQuantity = 0; // 初始化销售数量为0
+        this.salesQuantity = salesQuantity; // 初始化销售数量为0
     }
 
     // Getters
